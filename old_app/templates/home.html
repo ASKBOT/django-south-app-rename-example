@@ -1,0 +1,11 @@
+<html>
+<body>
+    <h1>App name is {{app_name}}</h1>
+    <p>We have data:</p>
+    <ul>
+        {% for item in data %}
+        <li>{{item.value}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
