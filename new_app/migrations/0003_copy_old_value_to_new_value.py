@@ -13,7 +13,7 @@ class Migration(DataMigration):
         if was_applied(__file__, 'old_app'):
             return
 
-        for item in orm.Something.objects.all():
+        for item in orm['old_app.Something'].objects.all():
             item.new_value = int(item.value)
             item.save()
 
