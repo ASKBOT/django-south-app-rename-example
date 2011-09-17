@@ -1,6 +1,6 @@
 # Create your views here.
 import os
-from old_app import models
+from new_app import models
 from django.shortcuts import render_to_response
 from django.template import Context
 

@@ -6,4 +6,5 @@ class Something(models.Model):
     new_value = models.IntegerField(default = 0)
 
     class Meta:
+        #for now leave table name as is
         db_table = 'old_app_something'
