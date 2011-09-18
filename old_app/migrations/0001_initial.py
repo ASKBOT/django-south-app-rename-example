@@ -3,6 +3,7 @@ import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from old_app.migration_utils import get_app_name
 
 class Migration(SchemaMigration):
 
@@ -13,7 +14,7 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('value', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
-        db.send_create_signal('old_app', ['Something'])
+        db.send_create_signal(get_app_name(), ['Something'])
 
 
     def backwards(self, orm):
