@@ -115,7 +115,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'old_app',
+    'new_app',
     'south',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',

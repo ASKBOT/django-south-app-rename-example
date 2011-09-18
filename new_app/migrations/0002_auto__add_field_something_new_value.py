@@ -3,30 +3,30 @@ import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
-from old_app.migration_utils import get_app_name
+from new_app.migration_utils import was_applied
 
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+
+        if was_applied(__file__, 'old_app'):
+            return
         
-        # Adding model 'Something'
-        db.create_table('old_app_something', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('value', self.gf('django.db.models.fields.BooleanField')(default=False)),
-        ))
-        db.send_create_signal(get_app_name(), ['Something'])
+        # Adding field 'Something.new_value'
+        db.add_column('old_app_something', 'new_value', self.gf('django.db.models.fields.IntegerField')(default=0), keep_default=False)
 
 
     def backwards(self, orm):
         
-        # Deleting model 'Something'
-        db.delete_table('old_app_something')
+        # Deleting field 'Something.new_value'
+        db.delete_column('old_app_something', 'new_value')
 
 
     models = {
         'old_app.something': {
             'Meta': {'object_name': 'Something'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'new_value': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'value': ('django.db.models.fields.BooleanField', [], {'default': 'False'})
         }
     }
